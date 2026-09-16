@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Matthijs Mullender</title>
     <meta name="description" content="Matthijs Mullender — personal site." />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%89%3C/text%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml" href="designs/assets/favicon-com.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              comfortaa: ["Comfortaa", "system-ui", "sans-serif"],
+            },
             colors: {
               moss: {
                 50: "#f2f5ee",
@@ -38,6 +44,8 @@
                 900: "#403227",
                 950: "#221912",
               },
+              orange: { 300: "#f5b781", 400: "#ed964e", 500: "#e08033", 600: "#c76b26" },
+              ocean: { 300: "#7ab1cd", 400: "#4a92b3", 500: "#2e6f8f", 600: "#245976" },
             },
           },
         },
@@ -60,7 +68,7 @@
           class="h-20 w-20 shrink-0 rounded-full object-cover ring-1 ring-moss-700 sm:h-24 sm:w-24"
         />
         <div class="min-w-0">
-          <h1 class="text-2xl font-semibold tracking-tight sm:text-3xl">Matthijs Mullender</h1>
+          <h1 class="font-comfortaa text-2xl font-bold tracking-tight sm:text-3xl">Matthijs Mullender</h1>
           <p class="mt-1 text-stone-300">
             Software engineer. I like solving problems &mdash; the harder, the funner. AI lets me take on more of them.
           </p>
@@ -87,7 +95,25 @@
         </p>
       </section>
 
-      <footer class="mt-auto text-xs text-stone-500">
+      <section class="mt-auto border-t border-moss-800/70 pt-6">
+        <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Also here</p>
+        <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+          <a class="group flex items-center gap-2" href="https://mullender.com">
+            <svg viewBox="0 0 128 128" class="h-6 w-6 shrink-0 rounded-md transition-transform group-hover:-translate-y-0.5" aria-hidden="true"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+            <span class="font-comfortaa font-bold text-stone-100">mullender<span class="text-moss-300">.com</span></span>
+          </a>
+          <a class="group flex items-center gap-2" href="https://mullender.nl">
+            <svg viewBox="0 0 128 128" class="h-6 w-6 shrink-0 rounded-md transition-transform group-hover:-translate-y-0.5" aria-hidden="true"><rect width="128" height="128" rx="22" fill="#e08033"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#fbf1e8" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+            <span class="font-comfortaa font-bold text-stone-100">mullender<span class="text-orange-400">.nl</span></span>
+          </a>
+          <a class="group flex items-center gap-2" href="https://mullender.dev">
+            <svg viewBox="0 0 128 128" class="h-6 w-6 shrink-0 rounded-md transition-transform group-hover:-translate-y-0.5" aria-hidden="true"><rect width="128" height="128" rx="22" fill="#2e6f8f"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#eaf3f8" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+            <span class="font-comfortaa font-bold text-stone-100">mullender<span class="text-ocean-400">.dev</span></span>
+          </a>
+        </div>
+      </section>
+
+      <footer class="mt-6 text-xs text-stone-500">
         &copy; <span id="year"></span> Matthijs Mullender
       </footer>
     </main>
