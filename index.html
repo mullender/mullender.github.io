@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Matthijs Mullender</title>
+    <meta name="description" content="Matthijs Mullender — personal site." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%89%3C/text%3E%3C/svg%3E" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              moss: {
+                50: "#f2f5ee",
+                100: "#e2ead9",
+                200: "#c6d5b4",
+                300: "#a3bb87",
+                400: "#82a063",
+                500: "#658449",
+                600: "#4e6a38",
+                700: "#3f532f",
+                800: "#354328",
+                900: "#2d3823",
+                950: "#161d10",
+              },
+              bark: {
+                50: "#f8f5f1",
+                100: "#ece4d8",
+                200: "#d7c6ae",
+                300: "#bea280",
+                400: "#a5835c",
+                500: "#8a6b45",
+                600: "#725638",
+                700: "#5c4530",
+                800: "#4c3a2b",
+                900: "#403227",
+                950: "#221912",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="h-full bg-moss-950 text-stone-100 antialiased selection:bg-moss-700 selection:text-stone-50">
+    <main class="mx-auto flex min-h-full max-w-2xl flex-col gap-10 px-6 py-16 sm:py-20">
+      <img
+        src="banner.jpg"
+        alt=""
+        aria-hidden="true"
+        class="aspect-[21/9] w-full rounded-2xl object-cover shadow-2xl shadow-moss-950/60 ring-1 ring-moss-800"
+      />
+
+      <header class="flex items-center gap-5 sm:gap-6">
+        <img
+          src="avatar.jpg"
+          alt="Matthijs Mullender"
+          class="h-20 w-20 shrink-0 rounded-full object-cover ring-1 ring-moss-700 sm:h-24 sm:w-24"
+        />
+        <div class="min-w-0">
+          <h1 class="text-2xl font-semibold tracking-tight sm:text-3xl">Matthijs Mullender</h1>
+          <p class="mt-1 text-stone-300">
+            Software engineer. I like solving problems &mdash; the harder, the funner. AI lets me take on more of them.
+          </p>
+          <p class="mt-2 text-sm text-stone-400">
+            Also: archer, hiker, dutch, home automator, embedded tinkerer, physicist, ..
+          </p>
+          <nav class="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="https://github.com/mullender">GitHub</a>
+            <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="https://www.linkedin.com/in/mullender/">LinkedIn</a>
+            <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="https://biscwa.org">BISC Archery</a>
+          </nav>
+        </div>
+      </header>
+
+      <section>
+        <h2 class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">
+          Recent projects
+        </h2>
+        <ul id="repos" class="mt-4 divide-y divide-moss-800/70">
+          <li class="py-4 text-sm text-stone-400">Loading&hellip;</li>
+        </ul>
+        <p class="mt-4 text-sm text-stone-400">
+          More on <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="https://github.com/mullender?tab=repositories">github.com/mullender</a>.
+        </p>
+      </section>
+
+      <footer class="mt-auto text-xs text-stone-500">
+        &copy; <span id="year"></span> Matthijs Mullender
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      (async () => {
+        const list = document.getElementById("repos");
+        try {
+          const res = await fetch(
+            "https://api.github.com/users/mullender/repos?sort=updated&per_page=100",
+            { headers: { Accept: "application/vnd.github+json" } },
+          );
+          if (!res.ok) throw new Error(res.status);
+          const repos = (await res.json())
+            .filter((r) => !r.fork && !r.archived)
+            .slice(0, 6);
+
+          if (repos.length === 0) {
+            list.innerHTML = '<li class="py-4 text-sm text-stone-400">No public repositories yet.</li>';
+            return;
+          }
+
+          list.innerHTML = repos
+            .map(
+              (r) => `
+                <li class="py-4">
+                  <a class="group flex flex-col gap-1" href="${r.html_url}">
+                    <div class="flex items-baseline justify-between gap-4">
+                      <span class="font-medium text-stone-100 underline-offset-4 decoration-moss-400 group-hover:underline">${r.name}</span>
+                      ${r.stargazers_count > 0 ? `<span class="shrink-0 text-xs text-bark-300">★ ${r.stargazers_count}</span>` : ""}
+                    </div>
+                    ${r.description ? `<p class="text-sm text-stone-400">${r.description.replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" })[c])}</p>` : ""}
+                    ${r.language ? `<p class="text-xs text-moss-400">${r.language}</p>` : ""}
+                  </a>
+                </li>
+              `,
+            )
+            .join("");
+        } catch (err) {
+          list.innerHTML = `<li class="py-4 text-sm text-stone-400">Couldn't load repositories. Visit <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="https://github.com/mullender">github.com/mullender</a>.</li>`;
+        }
+      })();
+    </script>
+  </body>
+</html>
