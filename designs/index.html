@@ -335,11 +335,72 @@
 
         <p class="mb-6 text-sm text-stone-400">
           Source SVGs live in <code class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-100">designs/assets/</code>.
-          Right-click &rarr; Save the previews below, or use the PNG exporter to render at any size.
-          The SVGs reference Comfortaa via <code class="text-moss-300">@import</code>, so they render correctly in
-          any browser with internet access. For truly offline / embedded use, generate PNGs with the exporter
-          then convert to ICO with ImageMagick (command at the bottom).
+          Two variants of each favicon:
+          <strong class="text-stone-200">source</strong> (uses Comfortaa via <code class="text-moss-300">@import</code>, editable — change the text and it re-renders),
+          and <strong class="text-stone-200">outlined</strong> (the m baked as an SVG <code class="text-moss-300">&lt;path&gt;</code>, no font dependency, safe for tab-bar rendering / offline / embedding).
+          The site uses the <strong class="text-moss-300">outlined</strong> version. Keep the source around for edits &mdash; regenerate the outlined file whenever the design changes.
         </p>
+
+        <!-- Source vs Outlined comparison -->
+        <div class="mb-8 rounded-2xl border border-moss-800/70 p-6">
+          <h3 class="text-sm font-semibold text-stone-200">Source vs. Outlined</h3>
+          <p class="mt-1 text-xs text-stone-500">
+            Both files render identically in a browser with Comfortaa loaded (like this page). The difference shows up in
+            environments that don't process <code>@font-face</code> inside SVG &mdash; some tab bars, image-based fetches, embedded viewers.
+            The outlined version is bulletproof there; the source falls back to <code>system-ui</code> and looks slightly different.
+          </p>
+          <div class="mt-5 grid gap-6 sm:grid-cols-3">
+            <!-- com pair -->
+            <div>
+              <p class="mb-2 text-xs font-medium uppercase tracking-[0.12em] text-moss-300">.com</p>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex flex-col items-center gap-2">
+                  <img src="assets/favicon-com.svg" alt="source" class="h-20 w-20" />
+                  <span class="font-mono text-[10px] text-stone-500">source</span>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                  <img src="assets/favicon-com-outlined.svg" alt="outlined" class="h-20 w-20" />
+                  <span class="font-mono text-[10px] text-moss-300">outlined &check;</span>
+                </div>
+              </div>
+            </div>
+            <!-- nl pair -->
+            <div>
+              <p class="mb-2 text-xs font-medium uppercase tracking-[0.12em] text-orange-400">.nl</p>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex flex-col items-center gap-2">
+                  <img src="assets/favicon-nl.svg" alt="source" class="h-20 w-20" />
+                  <span class="font-mono text-[10px] text-stone-500">source</span>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                  <img src="assets/favicon-nl-outlined.svg" alt="outlined" class="h-20 w-20" />
+                  <span class="font-mono text-[10px] text-orange-300">outlined &check;</span>
+                </div>
+              </div>
+            </div>
+            <!-- dev pair -->
+            <div>
+              <p class="mb-2 text-xs font-medium uppercase tracking-[0.12em] text-ocean-400">.dev</p>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex flex-col items-center gap-2">
+                  <img src="assets/favicon-dev.svg" alt="source" class="h-20 w-20" />
+                  <span class="font-mono text-[10px] text-stone-500">source</span>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                  <img src="assets/favicon-dev-outlined.svg" alt="outlined" class="h-20 w-20" />
+                  <span class="font-mono text-[10px] text-ocean-300">outlined &check;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mt-5 text-xs text-stone-500">
+            The path was extracted from the Comfortaa variable font (weight axis set to 700) via
+            <a class="text-moss-300 underline-offset-4 hover:underline" href="https://opentype.js.org/">opentype.js</a>,
+            centered in a 128&times;128 viewBox at 105&nbsp;px font-size. To regenerate after a design change, run
+            <code class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-100">designs/scripts/extract-m-path.cjs</code>
+            (usage in the file header).
+          </p>
+        </div>
 
         <div class="grid gap-6 md:grid-cols-3">
           <!-- .com asset card -->
@@ -352,7 +413,8 @@
               <img src="assets/favicon-com.svg" alt="mullender.com favicon" class="h-24 w-24" data-asset="com" />
             </div>
             <div class="mt-3 space-y-2 text-xs">
-              <a class="block text-moss-300 underline-offset-4 hover:underline" href="assets/favicon-com.svg" download>favicon-com.svg</a>
+              <a class="block text-moss-300 underline-offset-4 hover:underline" href="assets/favicon-com-outlined.svg" download>favicon-com-outlined.svg <span class="text-stone-500">(use this)</span></a>
+              <a class="block text-stone-500 underline-offset-4 hover:underline" href="assets/favicon-com.svg" download>favicon-com.svg <span class="text-stone-600">(source)</span></a>
               <a class="block text-moss-300 underline-offset-4 hover:underline" href="assets/wordmark-com.svg" download>wordmark-com.svg</a>
               <div class="flex flex-wrap gap-2 pt-2">
                 <button class="rounded bg-moss-800 px-2 py-1 text-xs text-moss-100 hover:bg-moss-700" data-png="com" data-size="16">16 px PNG</button>
@@ -373,7 +435,8 @@
               <img src="assets/favicon-nl.svg" alt="mullender.nl favicon" class="h-24 w-24" data-asset="nl" />
             </div>
             <div class="mt-3 space-y-2 text-xs">
-              <a class="block text-orange-400 underline-offset-4 hover:underline" href="assets/favicon-nl.svg" download>favicon-nl.svg</a>
+              <a class="block text-orange-400 underline-offset-4 hover:underline" href="assets/favicon-nl-outlined.svg" download>favicon-nl-outlined.svg <span class="text-stone-500">(use this)</span></a>
+              <a class="block text-stone-500 underline-offset-4 hover:underline" href="assets/favicon-nl.svg" download>favicon-nl.svg <span class="text-stone-600">(source)</span></a>
               <a class="block text-orange-400 underline-offset-4 hover:underline" href="assets/wordmark-nl.svg" download>wordmark-nl.svg</a>
               <div class="flex flex-wrap gap-2 pt-2">
                 <button class="rounded bg-orange-600/60 px-2 py-1 text-xs text-orange-50 hover:bg-orange-600" data-png="nl" data-size="16">16 px PNG</button>
@@ -394,7 +457,8 @@
               <img src="assets/favicon-dev.svg" alt="mullender.dev favicon" class="h-24 w-24" data-asset="dev" />
             </div>
             <div class="mt-3 space-y-2 text-xs">
-              <a class="block text-ocean-400 underline-offset-4 hover:underline" href="assets/favicon-dev.svg" download>favicon-dev.svg</a>
+              <a class="block text-ocean-400 underline-offset-4 hover:underline" href="assets/favicon-dev-outlined.svg" download>favicon-dev-outlined.svg <span class="text-stone-500">(use this)</span></a>
+              <a class="block text-stone-500 underline-offset-4 hover:underline" href="assets/favicon-dev.svg" download>favicon-dev.svg <span class="text-stone-600">(source)</span></a>
               <a class="block text-ocean-400 underline-offset-4 hover:underline" href="assets/wordmark-dev.svg" download>wordmark-dev.svg</a>
               <div class="flex flex-wrap gap-2 pt-2">
                 <button class="rounded bg-ocean-600/60 px-2 py-1 text-xs text-ocean-50 hover:bg-ocean-600" data-png="dev" data-size="16">16 px PNG</button>
@@ -472,10 +536,11 @@
 
       // ============ PNG EXPORT ============
       // Fetch the SVG, inline the m glyph as text into a canvas via a browser-rendered image
+      // Use outlined (path-based) variants so PNG rasterization doesn't depend on font loading
       const svgUrls = {
-        com: "assets/favicon-com.svg",
-        nl: "assets/favicon-nl.svg",
-        dev: "assets/favicon-dev.svg",
+        com: "assets/favicon-com-outlined.svg",
+        nl: "assets/favicon-nl-outlined.svg",
+        dev: "assets/favicon-dev-outlined.svg",
       };
 
       async function exportPng(tld, size) {
