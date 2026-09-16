@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brand guidelines &mdash; mullender</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              moss: {
+                50: "#f2f5ee", 100: "#e2ead9", 200: "#c6d5b4", 300: "#a3bb87", 400: "#82a063",
+                500: "#658449", 600: "#4e6a38", 700: "#3f532f", 800: "#354328", 900: "#2d3823", 950: "#161d10",
+              },
+              orange: { 50: "#fbf1e8", 300: "#f5b781", 400: "#ed964e", 500: "#e08033", 600: "#c76b26" },
+              ocean: { 50: "#eaf3f8", 300: "#7ab1cd", 400: "#4a92b3", 500: "#2e6f8f", 600: "#245976" },
+              bark: { 300: "#bea280", 500: "#8a6b45" },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .comfortaa { font-family: 'Comfortaa', system-ui, sans-serif; }
+      .swatch-copy { transition: opacity 0.15s; }
+    </style>
+  </head>
+  <body class="h-full bg-moss-950 text-stone-100 antialiased">
+    <main class="mx-auto max-w-5xl px-6 py-16">
+
+      <!-- ============ HEADER ============ -->
+      <header class="mb-20">
+        <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Brand guidelines &middot; v0.1</p>
+        <h1 class="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">The <span class="comfortaa text-moss-300">mullender</span> brand system</h1>
+        <p class="mt-4 max-w-2xl text-stone-400">
+          A minimal brand system for the personal site at
+          <a class="text-moss-300 underline-offset-4 hover:underline" href="https://mullender.com">mullender.com</a>,
+          with sibling identities for
+          <span class="text-orange-400 font-semibold">.nl</span> and
+          <span class="text-ocean-400 font-semibold">.dev</span>. One font, one letter, one shape &mdash;
+          differentiated by color to signal context. This page is the source of truth for logo,
+          typography, color, usage, and asset downloads.
+        </p>
+        <nav class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <a class="text-stone-400 underline-offset-4 hover:text-moss-300 hover:underline" href="#logo">Logo</a>
+          <a class="text-stone-400 underline-offset-4 hover:text-moss-300 hover:underline" href="#wordmark">Wordmark</a>
+          <a class="text-stone-400 underline-offset-4 hover:text-moss-300 hover:underline" href="#type">Typography</a>
+          <a class="text-stone-400 underline-offset-4 hover:text-moss-300 hover:underline" href="#color">Color</a>
+          <a class="text-stone-400 underline-offset-4 hover:text-moss-300 hover:underline" href="#usage">Usage</a>
+          <a class="text-stone-400 underline-offset-4 hover:text-moss-300 hover:underline" href="#assets">Assets</a>
+          <span class="text-stone-600">&middot;</span>
+          <a class="text-stone-500 underline-offset-4 hover:text-moss-300 hover:underline" href="study/logos.html">Exploration &rarr;</a>
+        </nav>
+      </header>
+
+      <!-- ============ LOGO ============ -->
+      <section id="logo" class="mb-20 scroll-mt-8">
+        <div class="mb-6 flex items-baseline gap-4">
+          <h2 class="text-2xl font-semibold tracking-tight">Logo &middot; the mark</h2>
+          <span class="text-sm text-stone-500">lowercase m in Comfortaa 700, cream on a colored slab, rx=22</span>
+        </div>
+        <div class="grid gap-6 rounded-2xl bg-moss-50 p-10 sm:grid-cols-3">
+          <div class="flex flex-col items-center gap-4">
+            <div class="h-32 w-32">
+              <svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+            </div>
+            <p class="text-xs font-mono text-moss-950">.com &middot; moss #4e6a38</p>
+          </div>
+          <div class="flex flex-col items-center gap-4">
+            <div class="h-32 w-32">
+              <svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#e08033"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#fbf1e8" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+            </div>
+            <p class="text-xs font-mono text-moss-950">.nl &middot; orange #e08033</p>
+          </div>
+          <div class="flex flex-col items-center gap-4">
+            <div class="h-32 w-32">
+              <svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#2e6f8f"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#eaf3f8" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+            </div>
+            <p class="text-xs font-mono text-moss-950">.dev &middot; ocean #2e6f8f</p>
+          </div>
+        </div>
+
+        <!-- Sizing / clearspace -->
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-moss-800/70 p-5">
+            <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Clearspace</p>
+            <p class="mt-1 text-sm text-stone-400">Reserve padding equal to <strong>1/4</strong> of the mark's height on all sides. Keep other elements outside this margin.</p>
+            <div class="mt-4 flex justify-center rounded-xl bg-stone-900 p-6">
+              <div class="relative">
+                <div class="absolute inset-0 -m-6 rounded-2xl border border-dashed border-moss-800"></div>
+                <div class="h-24 w-24">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-moss-800/70 p-5">
+            <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Minimum size</p>
+            <p class="mt-1 text-sm text-stone-400">Do not render smaller than <strong>16 px</strong>. Below that, the m loses arch legibility.</p>
+            <div class="mt-4 flex items-center justify-center gap-6 rounded-xl bg-stone-900 p-6">
+              <div class="flex flex-col items-center gap-1">
+                <div class="h-4 w-4">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <span class="text-[10px] text-stone-500">16 px</span>
+              </div>
+              <div class="flex flex-col items-center gap-1">
+                <div class="h-8 w-8">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <span class="text-[10px] text-stone-500">32 px</span>
+              </div>
+              <div class="flex flex-col items-center gap-1">
+                <div class="h-12 w-12">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <span class="text-[10px] text-stone-500">48 px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ WORDMARK ============ -->
+      <section id="wordmark" class="mb-20 scroll-mt-8">
+        <div class="mb-6 flex items-baseline gap-4">
+          <h2 class="text-2xl font-semibold tracking-tight">Wordmark</h2>
+          <span class="text-sm text-stone-500">Comfortaa 700, tight tracking, TLD in accent color</span>
+        </div>
+        <div class="grid gap-4 rounded-2xl bg-moss-50 p-10 sm:grid-cols-1">
+          <div class="text-center">
+            <span class="comfortaa text-5xl font-bold tracking-tight text-moss-950">mullender<span class="text-moss-600">.com</span></span>
+          </div>
+          <div class="text-center">
+            <span class="comfortaa text-5xl font-bold tracking-tight text-moss-950">mullender<span class="text-orange-500">.nl</span></span>
+          </div>
+          <div class="text-center">
+            <span class="comfortaa text-5xl font-bold tracking-tight text-moss-950">mullender<span class="text-ocean-500">.dev</span></span>
+          </div>
+        </div>
+        <div class="mt-4 grid gap-4 rounded-2xl bg-moss-950 p-10 ring-1 ring-moss-800 sm:grid-cols-1">
+          <div class="text-center">
+            <span class="comfortaa text-5xl font-bold tracking-tight text-stone-100">mullender<span class="text-moss-300">.com</span></span>
+          </div>
+          <div class="text-center">
+            <span class="comfortaa text-5xl font-bold tracking-tight text-stone-100">mullender<span class="text-orange-400">.nl</span></span>
+          </div>
+          <div class="text-center">
+            <span class="comfortaa text-5xl font-bold tracking-tight text-stone-100">mullender<span class="text-ocean-400">.dev</span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TYPOGRAPHY ============ -->
+      <section id="type" class="mb-20 scroll-mt-8">
+        <div class="mb-6 flex items-baseline gap-4">
+          <h2 class="text-2xl font-semibold tracking-tight">Typography</h2>
+          <span class="text-sm text-stone-500">One family &middot; two weights</span>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="rounded-2xl border border-moss-800/70 p-6">
+            <div class="flex items-baseline justify-between">
+              <span class="comfortaa text-3xl font-bold text-stone-100">Comfortaa 700</span>
+              <span class="text-xs text-stone-500">Bold</span>
+            </div>
+            <p class="mt-1 text-xs text-stone-500">Wordmark, headlines, section labels</p>
+            <div class="comfortaa mt-6 text-lg text-stone-200">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+              abcdefghijklmnopqrstuvwxyz<br>
+              0123456789 . , : ; ! ?
+            </div>
+          </div>
+          <div class="rounded-2xl border border-moss-800/70 p-6">
+            <div class="flex items-baseline justify-between">
+              <span class="comfortaa text-3xl font-semibold text-stone-100">Comfortaa 600</span>
+              <span class="text-xs text-stone-500">Semi-bold</span>
+            </div>
+            <p class="mt-1 text-xs text-stone-500">Subheads, secondary emphasis</p>
+            <div class="comfortaa mt-6 text-lg font-semibold text-stone-200">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+              abcdefghijklmnopqrstuvwxyz<br>
+              0123456789 . , : ; ! ?
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 rounded-2xl border border-moss-800/70 p-6">
+          <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Body copy</p>
+          <p class="mt-2 text-sm text-stone-400">
+            Body text uses the browser's default sans-serif stack
+            (<code class="text-moss-300">system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif</code>).
+            Comfortaa is reserved for the wordmark and section chrome &mdash; using it for body text sacrifices readability.
+          </p>
+          <p class="mt-4 text-base text-stone-300">The quick brown fox jumps over the lazy dog. 1234567890.</p>
+        </div>
+        <p class="mt-4 text-xs text-stone-500">
+          Comfortaa is a free typeface by Johan Aakerlund, distributed under the SIL Open Font License via
+          <a class="text-moss-300 underline-offset-4 hover:underline" href="https://fonts.google.com/specimen/Comfortaa">Google Fonts</a>.
+        </p>
+      </section>
+
+      <!-- ============ COLOR ============ -->
+      <section id="color" class="mb-20 scroll-mt-8">
+        <div class="mb-6 flex items-baseline gap-4">
+          <h2 class="text-2xl font-semibold tracking-tight">Color</h2>
+          <span class="text-sm text-stone-500">click any swatch to copy the hex</span>
+        </div>
+
+        <div class="space-y-8">
+
+          <!-- Primary / moss -->
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Moss &middot; primary (site + .com)</p>
+            <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-6">
+              <button class="swatch" data-hex="#f2f5ee" style="background:#f2f5ee"><span class="text-moss-950">50</span><span class="text-moss-950">#f2f5ee</span></button>
+              <button class="swatch" data-hex="#a3bb87" style="background:#a3bb87"><span class="text-moss-950">300</span><span class="text-moss-950">#a3bb87</span></button>
+              <button class="swatch" data-hex="#4e6a38" style="background:#4e6a38"><span class="text-stone-100">600</span><span class="text-stone-100">#4e6a38</span></button>
+              <button class="swatch" data-hex="#354328" style="background:#354328"><span class="text-stone-100">800</span><span class="text-stone-100">#354328</span></button>
+              <button class="swatch" data-hex="#2d3823" style="background:#2d3823"><span class="text-stone-100">900</span><span class="text-stone-100">#2d3823</span></button>
+              <button class="swatch" data-hex="#161d10" style="background:#161d10"><span class="text-stone-100">950</span><span class="text-stone-100">#161d10</span></button>
+            </div>
+          </div>
+
+          <!-- Orange -->
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[0.14em] text-orange-400">Orange &middot; .nl</p>
+            <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-5">
+              <button class="swatch" data-hex="#fbf1e8" style="background:#fbf1e8"><span class="text-moss-950">50</span><span class="text-moss-950">#fbf1e8</span></button>
+              <button class="swatch" data-hex="#f5b781" style="background:#f5b781"><span class="text-moss-950">300</span><span class="text-moss-950">#f5b781</span></button>
+              <button class="swatch" data-hex="#ed964e" style="background:#ed964e"><span class="text-moss-950">400</span><span class="text-moss-950">#ed964e</span></button>
+              <button class="swatch" data-hex="#e08033" style="background:#e08033"><span class="text-stone-100">500</span><span class="text-stone-100">#e08033</span></button>
+              <button class="swatch" data-hex="#c76b26" style="background:#c76b26"><span class="text-stone-100">600</span><span class="text-stone-100">#c76b26</span></button>
+            </div>
+          </div>
+
+          <!-- Ocean -->
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[0.14em] text-ocean-400">Ocean &middot; .dev</p>
+            <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-5">
+              <button class="swatch" data-hex="#eaf3f8" style="background:#eaf3f8"><span class="text-moss-950">50</span><span class="text-moss-950">#eaf3f8</span></button>
+              <button class="swatch" data-hex="#7ab1cd" style="background:#7ab1cd"><span class="text-moss-950">300</span><span class="text-moss-950">#7ab1cd</span></button>
+              <button class="swatch" data-hex="#4a92b3" style="background:#4a92b3"><span class="text-moss-950">400</span><span class="text-moss-950">#4a92b3</span></button>
+              <button class="swatch" data-hex="#2e6f8f" style="background:#2e6f8f"><span class="text-stone-100">500</span><span class="text-stone-100">#2e6f8f</span></button>
+              <button class="swatch" data-hex="#245976" style="background:#245976"><span class="text-stone-100">600</span><span class="text-stone-100">#245976</span></button>
+            </div>
+          </div>
+
+          <!-- Bark (accent) -->
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[0.14em] text-bark-300">Bark &middot; warm accent</p>
+            <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-2">
+              <button class="swatch" data-hex="#bea280" style="background:#bea280"><span class="text-moss-950">300</span><span class="text-moss-950">#bea280</span></button>
+              <button class="swatch" data-hex="#8a6b45" style="background:#8a6b45"><span class="text-stone-100">500</span><span class="text-stone-100">#8a6b45</span></button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-moss-800/70 p-6 text-sm text-stone-400">
+          <p><strong class="text-stone-200">Usage rules.</strong></p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Site chrome uses <span class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-100">moss-950</span> for backgrounds and <span class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-100">stone-100</span> for text.</li>
+            <li>Links use <span class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-300">moss-300</span>; hover brightens to <span class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-200">moss-200</span>.</li>
+            <li>TLD accent colors (<span class="text-moss-300 font-mono text-xs">moss</span>, <span class="text-orange-400 font-mono text-xs">orange</span>, <span class="text-ocean-400 font-mono text-xs">ocean</span>) appear <em>only</em> in the wordmark's TLD text and in the corresponding favicon tile. Do not use them for buttons, borders, or body copy.</li>
+            <li>Bark is a small warm accent for e.g. star counts, badges, secondary metadata &mdash; never for headings.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ USAGE ============ -->
+      <section id="usage" class="mb-20 scroll-mt-8">
+        <div class="mb-6 flex items-baseline gap-4">
+          <h2 class="text-2xl font-semibold tracking-tight">Usage</h2>
+          <span class="text-sm text-stone-500">do's and don'ts</span>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+
+          <!-- DO -->
+          <div class="rounded-2xl border-2 border-moss-500/40 bg-moss-950 p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-moss-300">Do</p>
+            <ul class="mt-3 space-y-4 text-sm text-stone-300">
+              <li class="flex items-center gap-4">
+                <div class="h-14 w-14 shrink-0"><svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg></div>
+                Use the correct color per TLD (moss for .com, orange for .nl, ocean for .dev).
+              </li>
+              <li class="flex items-center gap-4">
+                <div class="h-14 w-14 shrink-0"><svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg></div>
+                Keep the corner radius at <span class="font-mono text-moss-300">rx=22</span> in the 128&nbsp;px viewBox (roughly 17% of the tile).
+              </li>
+              <li class="flex items-center gap-4">
+                <div class="flex h-14 w-14 shrink-0 items-center justify-center"><svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="none" stroke="#a3bb87" stroke-width="4"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#a3bb87" text-anchor="middle" dominant-baseline="middle">m</text></svg></div>
+                For adaptive icons on dark tab bars, use the outline variant.
+              </li>
+            </ul>
+          </div>
+
+          <!-- DON'T -->
+          <div class="rounded-2xl border-2 border-orange-500/40 bg-moss-950 p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-orange-400">Don't</p>
+            <ul class="mt-3 space-y-4 text-sm text-stone-300">
+              <li class="flex items-center gap-4">
+                <div class="h-14 w-14 shrink-0"><svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#e88df6"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg></div>
+                Don't invent new colors. Use only the three sanctioned accents.
+              </li>
+              <li class="flex items-center gap-4">
+                <div class="h-14 w-14 shrink-0"><svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="'Times New Roman', serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg></div>
+                Don't swap the font. Comfortaa 700 is the mark &mdash; the m is the shape.
+              </li>
+              <li class="flex items-center gap-4">
+                <div class="h-14 w-14 shrink-0"><svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="22" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle" transform="rotate(15 64 64)">m</text></svg></div>
+                Don't rotate, skew, or add drop shadows.
+              </li>
+              <li class="flex items-center gap-4">
+                <div class="h-14 w-14 shrink-0"><svg viewBox="0 0 128 128" class="h-full w-full"><rect width="128" height="128" rx="60" fill="#4e6a38"/><text x="64" y="64" font-family="Comfortaa, system-ui, sans-serif" font-weight="700" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg></div>
+                Don't change the corner radius (no full-circle, no sharp corners).
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============ ASSETS ============ -->
+      <section id="assets" class="mb-16 scroll-mt-8">
+        <div class="mb-6 flex items-baseline gap-4">
+          <h2 class="text-2xl font-semibold tracking-tight">Assets</h2>
+          <span class="text-sm text-stone-500">SVG source &middot; PNG export &middot; ICO instructions</span>
+        </div>
+
+        <p class="mb-6 text-sm text-stone-400">
+          Source SVGs live in <code class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-100">designs/assets/</code>.
+          Right-click &rarr; Save the previews below, or use the PNG exporter to render at any size.
+          The SVGs reference Comfortaa via <code class="text-moss-300">@import</code>, so they render correctly in
+          any browser with internet access. For truly offline / embedded use, generate PNGs with the exporter
+          then convert to ICO with ImageMagick (command at the bottom).
+        </p>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <!-- .com asset card -->
+          <div class="rounded-2xl border border-moss-800/70 p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="text-sm font-semibold text-stone-200">.com</span>
+              <span class="h-2 w-8 rounded-full bg-moss-500"></span>
+            </div>
+            <div class="flex justify-center rounded-xl bg-moss-50 p-4">
+              <img src="assets/favicon-com.svg" alt="mullender.com favicon" class="h-24 w-24" data-asset="com" />
+            </div>
+            <div class="mt-3 space-y-2 text-xs">
+              <a class="block text-moss-300 underline-offset-4 hover:underline" href="assets/favicon-com.svg" download>favicon-com.svg</a>
+              <a class="block text-moss-300 underline-offset-4 hover:underline" href="assets/wordmark-com.svg" download>wordmark-com.svg</a>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <button class="rounded bg-moss-800 px-2 py-1 text-xs text-moss-100 hover:bg-moss-700" data-png="com" data-size="16">16 px PNG</button>
+                <button class="rounded bg-moss-800 px-2 py-1 text-xs text-moss-100 hover:bg-moss-700" data-png="com" data-size="32">32 px</button>
+                <button class="rounded bg-moss-800 px-2 py-1 text-xs text-moss-100 hover:bg-moss-700" data-png="com" data-size="180">180 px</button>
+                <button class="rounded bg-moss-800 px-2 py-1 text-xs text-moss-100 hover:bg-moss-700" data-png="com" data-size="512">512 px</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- .nl asset card -->
+          <div class="rounded-2xl border border-moss-800/70 p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="text-sm font-semibold text-stone-200">.nl</span>
+              <span class="h-2 w-8 rounded-full bg-orange-500"></span>
+            </div>
+            <div class="flex justify-center rounded-xl bg-moss-50 p-4">
+              <img src="assets/favicon-nl.svg" alt="mullender.nl favicon" class="h-24 w-24" data-asset="nl" />
+            </div>
+            <div class="mt-3 space-y-2 text-xs">
+              <a class="block text-orange-400 underline-offset-4 hover:underline" href="assets/favicon-nl.svg" download>favicon-nl.svg</a>
+              <a class="block text-orange-400 underline-offset-4 hover:underline" href="assets/wordmark-nl.svg" download>wordmark-nl.svg</a>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <button class="rounded bg-orange-600/60 px-2 py-1 text-xs text-orange-50 hover:bg-orange-600" data-png="nl" data-size="16">16 px PNG</button>
+                <button class="rounded bg-orange-600/60 px-2 py-1 text-xs text-orange-50 hover:bg-orange-600" data-png="nl" data-size="32">32 px</button>
+                <button class="rounded bg-orange-600/60 px-2 py-1 text-xs text-orange-50 hover:bg-orange-600" data-png="nl" data-size="180">180 px</button>
+                <button class="rounded bg-orange-600/60 px-2 py-1 text-xs text-orange-50 hover:bg-orange-600" data-png="nl" data-size="512">512 px</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- .dev asset card -->
+          <div class="rounded-2xl border border-moss-800/70 p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="text-sm font-semibold text-stone-200">.dev</span>
+              <span class="h-2 w-8 rounded-full bg-ocean-500"></span>
+            </div>
+            <div class="flex justify-center rounded-xl bg-moss-50 p-4">
+              <img src="assets/favicon-dev.svg" alt="mullender.dev favicon" class="h-24 w-24" data-asset="dev" />
+            </div>
+            <div class="mt-3 space-y-2 text-xs">
+              <a class="block text-ocean-400 underline-offset-4 hover:underline" href="assets/favicon-dev.svg" download>favicon-dev.svg</a>
+              <a class="block text-ocean-400 underline-offset-4 hover:underline" href="assets/wordmark-dev.svg" download>wordmark-dev.svg</a>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <button class="rounded bg-ocean-600/60 px-2 py-1 text-xs text-ocean-50 hover:bg-ocean-600" data-png="dev" data-size="16">16 px PNG</button>
+                <button class="rounded bg-ocean-600/60 px-2 py-1 text-xs text-ocean-50 hover:bg-ocean-600" data-png="dev" data-size="32">32 px</button>
+                <button class="rounded bg-ocean-600/60 px-2 py-1 text-xs text-ocean-50 hover:bg-ocean-600" data-png="dev" data-size="180">180 px</button>
+                <button class="rounded bg-ocean-600/60 px-2 py-1 text-xs text-ocean-50 hover:bg-ocean-600" data-png="dev" data-size="512">512 px</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ICO instructions -->
+        <div class="mt-8 rounded-2xl border border-moss-800/70 p-6">
+          <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Making <code class="text-moss-200">favicon.ico</code></p>
+          <p class="mt-2 text-sm text-stone-400">
+            Download the 16, 32, and 48 px PNGs above, then combine into a multi-resolution ICO with ImageMagick:
+          </p>
+          <pre class="mt-3 overflow-x-auto rounded-xl bg-stone-900 p-4 font-mono text-xs text-moss-100"><code>magick favicon-com-16.png favicon-com-32.png favicon-com-48.png favicon.ico</code></pre>
+          <p class="mt-3 text-xs text-stone-500">
+            (Or drop the 512 px PNG into <a class="text-moss-300 underline-offset-4 hover:underline" href="https://realfavicongenerator.net">realfavicongenerator.net</a> for a full multi-platform bundle including apple-touch-icon, manifest, and safari-pinned SVG.)
+          </p>
+        </div>
+      </section>
+
+      <footer class="mt-8 border-t border-moss-800/70 pt-8 text-sm text-stone-400">
+        <p>
+          v0.1 &middot; source of truth for the mullender identity. Iterations and rejected concepts live in
+          <a class="text-moss-300 underline-offset-4 hover:underline" href="study/logos.html">designs/study/</a>.
+        </p>
+      </footer>
+    </main>
+
+    <!-- Hidden toast -->
+    <div id="toast" class="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-moss-600 px-4 py-2 text-sm text-stone-50 opacity-0 shadow-lg transition-opacity duration-200">copied</div>
+
+    <style>
+      .swatch {
+        aspect-ratio: 16 / 9;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+        text-align: left;
+        font-family: ui-monospace, monospace;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .swatch:hover { transform: translateY(-2px); }
+      .swatch span { display: block; }
+    </style>
+
+    <script>
+      // ============ SWATCH COPY ============
+      const toast = document.getElementById("toast");
+      let toastTimer;
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.style.opacity = "1";
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => (toast.style.opacity = "0"), 1400);
+      }
+      document.querySelectorAll(".swatch").forEach((el) => {
+        el.addEventListener("click", async () => {
+          const hex = el.dataset.hex;
+          try {
+            await navigator.clipboard.writeText(hex);
+            showToast(`copied ${hex}`);
+          } catch (e) {
+            showToast(hex);
+          }
+        });
+      });
+
+      // ============ PNG EXPORT ============
+      // Fetch the SVG, inline the m glyph as text into a canvas via a browser-rendered image
+      const svgUrls = {
+        com: "assets/favicon-com.svg",
+        nl: "assets/favicon-nl.svg",
+        dev: "assets/favicon-dev.svg",
+      };
+
+      async function exportPng(tld, size) {
+        // Wait for Comfortaa to be ready so the browser rasterizes it correctly
+        await document.fonts.load('700 105px "Comfortaa"');
+
+        // Fetch the SVG text so we can embed the font via <style> inline (works cross-origin for local files)
+        const res = await fetch(svgUrls[tld]);
+        const svgText = await res.text();
+
+        // Wrap into an image blob
+        const blob = new Blob([svgText], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.decoding = "sync";
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = url;
+        });
+
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, size, size);
+        URL.revokeObjectURL(url);
+
+        canvas.toBlob((pngBlob) => {
+          const pngUrl = URL.createObjectURL(pngBlob);
+          const a = document.createElement("a");
+          a.href = pngUrl;
+          a.download = `favicon-${tld}-${size}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(pngUrl), 1000);
+          showToast(`downloaded favicon-${tld}-${size}.png`);
+        }, "image/png");
+      }
+
+      document.querySelectorAll("[data-png]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tld = btn.dataset.png;
+          const size = parseInt(btn.dataset.size, 10);
+          exportPng(tld, size).catch((e) => {
+            console.error(e);
+            showToast("export failed &mdash; check console");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

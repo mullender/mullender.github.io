@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Favicon studies &mdash; optical centering</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Comfortaa:wght@700&family=Poppins:wght@700&family=Space+Grotesk:wght@700&family=DM+Sans:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              moss: {
+                50: "#f2f5ee", 100: "#e2ead9", 200: "#c6d5b4", 300: "#a3bb87", 400: "#82a063",
+                500: "#658449", 600: "#4e6a38", 700: "#3f532f", 800: "#354328", 900: "#2d3823", 950: "#161d10",
+              },
+              bark: { 300: "#bea280", 500: "#8a6b45" },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="h-full bg-moss-950 text-stone-100 antialiased">
+    <main class="mx-auto max-w-5xl px-6 py-16">
+      <nav class="mb-10 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <a class="text-stone-500 underline-offset-4 hover:text-moss-300 hover:underline" href="../index.html">&larr; Brand guidelines</a>
+        <span class="text-stone-700">/</span>
+        <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="logos.html">01. Concepts</a>
+        <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="logos-wordmark.html">02. Wordmark studies</a>
+        <a class="text-moss-300 underline hover:text-moss-200" href="logos-favicon.html">03. Favicon &mdash; optical centering</a>
+        <a class="text-moss-300 underline-offset-4 hover:text-moss-200 hover:underline" href="logos-narrow.html">04. Narrowing &mdash; Comfortaa + TLD colors</a>
+      </nav>
+
+      <header class="mb-14">
+        <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Favicon &middot; optical vs geometric centering</p>
+        <h1 class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Centering the ink, not the box</h1>
+        <p class="mt-4 max-w-2xl text-stone-400">
+          Your instinct is right: a glyph centered by its bounding box often <em>looks</em> off-center, because the
+          left and right halves don't contain the same amount of ink. Each favicon below shifts the glyph so the
+          horizontal centroid (area-weighted center) sits at the box center. The shift is computed at load time
+          &mdash; a hidden canvas rasterizes each glyph and averages the ink pixels.
+        </p>
+      </header>
+
+      <!-- ============ DEMO CARD: bbox vs centroid ============ -->
+      <section class="mb-12 rounded-2xl border border-moss-800/70 p-6">
+        <h2 class="text-lg font-semibold">Demo &middot; the same glyph centered two ways</h2>
+        <p class="mt-2 text-sm text-stone-400">
+          Lowercase <span class="font-mono text-moss-300">m.</span> in Nunito Extrabold. The period pulls the ink centroid
+          to the right; the traditional geometric centering leaves the letter feeling left-heavy.
+        </p>
+        <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="text-center">
+            <div class="relative mx-auto flex h-40 w-40 items-center justify-center rounded-2xl bg-moss-600" data-favicon data-char="m." data-font="Nunito" data-weight="800" data-mode="bbox">
+              <svg viewBox="0 0 128 128" class="h-full w-full">
+                <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="100" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m.</text>
+                <line class="axis" x1="64" y1="8" x2="64" y2="120" stroke="#f2f5ee" stroke-width="0.5" stroke-dasharray="2 3" opacity="0.5"/>
+              </svg>
+            </div>
+            <p class="mt-3 text-xs uppercase tracking-[0.12em] text-stone-400">geometric center (bbox)</p>
+          </div>
+          <div class="text-center">
+            <div class="relative mx-auto flex h-40 w-40 items-center justify-center rounded-2xl bg-moss-600" data-favicon data-char="m." data-font="Nunito" data-weight="800" data-mode="centroid" data-show-marker="true">
+              <svg viewBox="0 0 128 128" class="h-full w-full">
+                <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="100" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m.</text>
+                <line class="axis" x1="64" y1="8" x2="64" y2="120" stroke="#f2f5ee" stroke-width="0.5" stroke-dasharray="2 3" opacity="0.5"/>
+              </svg>
+            </div>
+            <p class="mt-3 text-xs uppercase tracking-[0.12em] text-moss-300">
+              ink centroid <span class="shift-label text-stone-400">(&hellip;)</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAVICON GRID (all centroid-centered) ============ -->
+      <section class="grid grid-cols-1 gap-6 md:grid-cols-2">
+
+        <!-- 01. Nunito m -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m" data-font="Nunito" data-weight="800" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">01. Nunito m</h3>
+              <p class="mt-1 text-sm text-stone-400">The wordmark's initial in the same rounded font as the logo. Lowercase m has a nearly symmetric skeleton &mdash; small shift.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02. Nunito m. -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m." data-font="Nunito" data-weight="800" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="100" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m.</text></svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="100" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m.</text></svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="100" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m.</text></svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">02. Nunito m.</h3>
+              <p class="mt-1 text-sm text-stone-400">Same but with the trailing period from the wordmark. Bigger optical shift &mdash; period adds ink far to the right.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03. Comfortaa m -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m" data-font="Comfortaa" data-weight="700" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Comfortaa" font-weight="700" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Comfortaa" font-weight="700" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Comfortaa" font-weight="700" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">03. Comfortaa m</h3>
+              <p class="mt-1 text-sm text-stone-400">Extra-rounded terminals. Reads softer than Nunito; loses some crispness at 16&nbsp;px.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04. Poppins m -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m" data-font="Poppins" data-weight="700" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Poppins" font-weight="700" font-size="115" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Poppins" font-weight="700" font-size="115" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Poppins" font-weight="700" font-size="115" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">04. Poppins m</h3>
+              <p class="mt-1 text-sm text-stone-400">Geometric with subtle curves. Cleanest at small sizes of the three round-sans options.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05. Quicksand m -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m" data-font="Quicksand" data-weight="700" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Quicksand" font-weight="700" font-size="115" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Quicksand" font-weight="700" font-size="115" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Quicksand" font-weight="700" font-size="115" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">05. Quicksand m</h3>
+              <p class="mt-1 text-sm text-stone-400">Between Nunito and Comfortaa in roundness. Slimmer stems.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06. Uppercase M in Nunito -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="M" data-font="Nunito" data-weight="800" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">M</text></svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">M</text></svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">M</text></svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">06. Uppercase M (Nunito)</h3>
+              <p class="mt-1 text-sm text-stone-400">More horizontal ink coverage than lowercase, feels stronger at 16&nbsp;px. Doesn't match the wordmark casing though.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 07. Circle background -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m" data-font="Nunito" data-weight="800" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center">
+                <svg viewBox="0 0 128 128" class="h-full w-full">
+                  <circle cx="64" cy="64" r="60" fill="#4e6a38"/>
+                  <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text>
+                </svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <svg viewBox="0 0 128 128" class="h-8 w-8">
+                  <circle cx="64" cy="64" r="60" fill="#4e6a38"/>
+                  <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text>
+                </svg>
+                <svg viewBox="0 0 128 128" class="h-4 w-4">
+                  <circle cx="64" cy="64" r="60" fill="#4e6a38"/>
+                  <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="105" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text>
+                </svg>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">07. Round mark</h3>
+              <p class="mt-1 text-sm text-stone-400">Circle instead of rounded square &mdash; more distinctive in a browser tab bar of squares.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 08. Two-tone m with bark dot -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m" data-font="Nunito" data-weight="800" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full">
+                  <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text>
+                  <circle cx="105" cy="94" r="7" fill="#bea280"/>
+                </svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full">
+                    <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text>
+                    <circle cx="105" cy="94" r="7" fill="#bea280"/>
+                  </svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full">
+                    <text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#f2f5ee" text-anchor="middle" dominant-baseline="middle">m</text>
+                    <circle cx="105" cy="94" r="7" fill="#bea280"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">08. m + accent dot</h3>
+              <p class="mt-1 text-sm text-stone-400">A bark-colored dot sits beside the m &mdash; echoes the wordmark's period. Only m is centroid-centered; the dot is decorative.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 09. Outline / adaptive -->
+        <article class="rounded-2xl border border-moss-800/70 p-6" data-favicon data-char="m" data-font="Nunito" data-weight="800" data-mode="centroid">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl border-2 border-moss-300 bg-transparent">
+                <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#a3bb87" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md border border-moss-300">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#a3bb87" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm border border-moss-300">
+                  <svg viewBox="0 0 128 128" class="h-full w-full"><text class="glyph" x="64" y="64" font-family="Nunito" font-weight="800" font-size="110" fill="#a3bb87" text-anchor="middle" dominant-baseline="middle">m</text></svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">09. Outline / adaptive</h3>
+              <p class="mt-1 text-sm text-stone-400">Transparent background, sage-outlined box. Works on light and dark Safari tab bars alike; loses presence at 16&nbsp;px.</p>
+              <p class="shift-label mt-2 font-mono text-xs text-moss-300">&hellip;</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10. Antler peaks favicon -->
+        <article class="rounded-2xl border border-moss-800/70 p-6">
+          <div class="flex items-start gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-moss-600 shadow-lg shadow-moss-950/60">
+                <svg viewBox="0 0 128 128" class="h-full w-full">
+                  <path d="M 12 100 L 42 52 L 58 74 L 74 40 L 90 74 L 106 52 L 116 100 Z" fill="#f2f5ee"/>
+                  <path d="M 42 52 L 38 42 M 42 52 L 46 44 M 106 52 L 110 42 M 106 52 L 102 44" stroke="#f2f5ee" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex h-8 w-8 items-center justify-center rounded-md bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full">
+                    <path d="M 12 100 L 42 52 L 58 74 L 74 40 L 90 74 L 106 52 L 116 100 Z" fill="#f2f5ee"/>
+                  </svg>
+                </div>
+                <div class="flex h-4 w-4 items-center justify-center rounded-sm bg-moss-600">
+                  <svg viewBox="0 0 128 128" class="h-full w-full">
+                    <path d="M 12 100 L 42 52 L 58 74 L 74 40 L 90 74 L 106 52 L 116 100 Z" fill="#f2f5ee"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="text-lg font-semibold">10. Antler peaks</h3>
+              <p class="mt-1 text-sm text-stone-400">The "M as mountain peaks" idea from concept 04, adapted as a favicon. Already visually balanced (symmetric silhouette); no glyph centroid needed.</p>
+              <p class="mt-2 font-mono text-xs text-stone-500">symmetric &mdash; no shift needed</p>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <footer class="mt-16 border-t border-moss-800/70 pt-8 text-sm text-stone-400">
+        <p>
+          Numbers under each mark are the actual pixel shift applied to move the ink centroid to the box center,
+          measured against the glyph size. Symmetric letters (bare m, uppercase M) come out near 0. Adding a period
+          or accent pushes the shift by several percent &mdash; visible to the eye once you know to look.
+        </p>
+        <p class="mt-3">
+          Next: once you pick a favorite, we bake the offset into a static SVG (no JS needed at runtime),
+          and export a <code class="text-moss-300">favicon.ico</code>&nbsp;/&nbsp;<code class="text-moss-300">apple-touch-icon.png</code> set.
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      // Measure the ink centroid of a glyph and shift the SVG text so it aligns with the box center.
+      const CANVAS_SIZE = 256;
+
+      async function measureCentroid(char, fontFamily, fontWeight) {
+        const S = CANVAS_SIZE;
+        const measureSize = 180;
+        // Ensure font is loaded before measuring
+        await document.fonts.load(`${fontWeight} ${measureSize}px "${fontFamily}"`);
+        const canvas = document.createElement("canvas");
+        canvas.width = S;
+        canvas.height = S;
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+        ctx.clearRect(0, 0, S, S);
+        ctx.fillStyle = "#000";
+        ctx.font = `${fontWeight} ${measureSize}px "${fontFamily}"`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(char, S / 2, S / 2);
+        const data = ctx.getImageData(0, 0, S, S).data;
+        let sx = 0, sy = 0, w = 0;
+        let minX = S, maxX = 0, minY = S, maxY = 0;
+        for (let y = 0; y < S; y++) {
+          for (let x = 0; x < S; x++) {
+            const a = data[(y * S + x) * 4 + 3] / 255;
+            if (a > 0.05) {
+              sx += x * a;
+              sy += y * a;
+              w += a;
+              if (x < minX) minX = x;
+              if (x > maxX) maxX = x;
+              if (y < minY) minY = y;
+              if (y > maxY) maxY = y;
+            }
+          }
+        }
+        if (w === 0) return null;
+        // Express shift as a fraction of the measurement font size — invariant to actual SVG font size
+        return {
+          shiftXFrac: (S / 2 - sx / w) / measureSize,
+          shiftYFrac: (S / 2 - sy / w) / measureSize,
+          bboxShiftXFrac: (S / 2 - (minX + maxX) / 2) / measureSize,
+          bboxShiftYFrac: (S / 2 - (minY + maxY) / 2) / measureSize,
+        };
+      }
+
+      async function applyToCard(card) {
+        const char = card.dataset.char;
+        const font = card.dataset.font;
+        const weight = card.dataset.weight || "700";
+        const mode = card.dataset.mode || "centroid";
+        const showMarker = card.dataset.showMarker === "true";
+
+        const m = await measureCentroid(char, font, weight);
+        if (!m) return;
+
+        const shiftX = mode === "bbox" ? m.bboxShiftXFrac : m.shiftXFrac;
+        const shiftY = mode === "bbox" ? m.bboxShiftYFrac : m.shiftYFrac;
+
+        card.querySelectorAll(".glyph").forEach((el) => {
+          const svg = el.ownerSVGElement;
+          const vb = svg.viewBox.baseVal;
+          const fontSize = parseFloat(el.getAttribute("font-size"));
+          const dx = shiftX * fontSize;
+          const dy = shiftY * fontSize;
+          el.setAttribute("x", vb.width / 2 + dx);
+          el.setAttribute("y", vb.height / 2 + dy);
+
+          if (showMarker) {
+            const marker = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            marker.setAttribute("cx", vb.width / 2);
+            marker.setAttribute("cy", vb.height / 2);
+            marker.setAttribute("r", "2");
+            marker.setAttribute("fill", "#a3bb87");
+            svg.appendChild(marker);
+          }
+        });
+
+        const label = card.querySelector(".shift-label");
+        if (label) {
+          const pctX = (m.shiftXFrac * 100).toFixed(1);
+          const sign = m.shiftXFrac >= 0 ? "+" : "";
+          label.textContent = `shift ${sign}${pctX}% x  (canvas-measured)`;
+        }
+      }
+
+      async function run() {
+        await document.fonts.ready;
+        document.querySelectorAll("[data-favicon]").forEach((card) => {
+          applyToCard(card).catch((e) => console.warn("centroid failed for card", card, e));
+        });
+      }
+
+      run();
+    </script>
+  </body>
+</html>
