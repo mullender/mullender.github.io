@@ -470,15 +470,23 @@
           </div>
         </div>
 
-        <!-- ICO instructions -->
+        <!-- Icon build pipeline -->
         <div class="mt-8 rounded-2xl border border-moss-800/70 p-6">
-          <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Making <code class="text-moss-200">favicon.ico</code></p>
+          <p class="text-xs font-medium uppercase tracking-[0.14em] text-moss-300">Regenerating the root icons</p>
           <p class="mt-2 text-sm text-stone-400">
-            Download the 16, 32, and 48 px PNGs above, then combine into a multi-resolution ICO with ImageMagick:
+            The site's <code class="text-moss-200">favicon.ico</code> and <code class="text-moss-200">apple-touch-icon.png</code> are rasterized from
+            <code class="text-moss-200">favicon.svg</code> (a copy of <code class="text-moss-200">favicon-com-outlined.svg</code>) by the build script
+            <code class="rounded bg-moss-800 px-1.5 py-0.5 font-mono text-xs text-moss-100">designs/scripts/build-icons.sh</code>.
+            Run it from the repo root after editing the SVG:
           </p>
-          <pre class="mt-3 overflow-x-auto rounded-xl bg-stone-900 p-4 font-mono text-xs text-moss-100"><code>magick favicon-com-16.png favicon-com-32.png favicon-com-48.png favicon.ico</code></pre>
+          <pre class="mt-3 overflow-x-auto rounded-xl bg-stone-900 p-4 font-mono text-xs text-moss-100"><code>./designs/scripts/build-icons.sh</code></pre>
           <p class="mt-3 text-xs text-stone-500">
-            (Or drop the 512 px PNG into <a class="text-moss-300 underline-offset-4 hover:underline" href="https://realfavicongenerator.net">realfavicongenerator.net</a> for a full multi-platform bundle including apple-touch-icon, manifest, and safari-pinned SVG.)
+            Under the hood it runs ImageMagick with <code class="text-moss-300">-background none -density 512 -filter Lanczos</code>
+            for crisp, alpha-preserving downsampling, then packs the 16/32/48 PNGs into a multi-resolution ICO.
+            <br>Prerequisite: ImageMagick 7 (<code>brew install imagemagick</code>).
+          </p>
+          <p class="mt-3 text-xs text-stone-500">
+            (Alternative: drop the 512 px PNG into <a class="text-moss-300 underline-offset-4 hover:underline" href="https://realfavicongenerator.net">realfavicongenerator.net</a> for a full multi-platform bundle including manifest and safari-pinned SVG.)
           </p>
         </div>
       </section>
