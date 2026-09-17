@@ -56,12 +56,16 @@
   </head>
   <body class="h-full bg-moss-950 text-stone-100 antialiased selection:bg-moss-700 selection:text-stone-50">
     <main class="mx-auto flex min-h-full max-w-2xl flex-col gap-10 px-6 py-16 sm:py-20">
-      <img
-        src="banner.jpg"
-        alt=""
-        aria-hidden="true"
-        class="aspect-[21/9] w-full rounded-2xl object-cover shadow-2xl shadow-moss-950/60 ring-1 ring-moss-800"
-      />
+      <div class="aspect-[21/9] w-full overflow-hidden rounded-2xl shadow-2xl shadow-moss-950/60 ring-1 ring-moss-800">
+        <img
+          id="banner"
+          src="banner.jpg"
+          alt=""
+          aria-hidden="true"
+          class="h-full w-full object-cover will-change-transform motion-reduce:transform-none"
+          style="transform: scale(1.12);"
+        />
+      </div>
 
       <header class="flex items-center gap-5 sm:gap-6">
         <img
@@ -123,6 +127,33 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Subtle banner parallax — banner drifts down as page scrolls, giving depth without stealing focus.
+      (() => {
+        const banner = document.getElementById("banner");
+        if (!banner) return;
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const wrap = banner.parentElement;
+        let raf = null;
+        const update = () => {
+          raf = null;
+          const rect = wrap.getBoundingClientRect();
+          // Only compute while the banner is anywhere near the viewport.
+          if (rect.bottom < -50 || rect.top > window.innerHeight + 50) return;
+          const scrollPast = Math.max(0, -rect.top);
+          const cap = rect.height * 0.05; // keep within the 12% scale buffer
+          const y = Math.min(scrollPast * 0.2, cap);
+          banner.style.transform = `scale(1.12) translate3d(0, ${y}px, 0)`;
+        };
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (raf === null) raf = requestAnimationFrame(update);
+          },
+          { passive: true },
+        );
+        update();
+      })();
 
       (async () => {
         const list = document.getElementById("repos");
